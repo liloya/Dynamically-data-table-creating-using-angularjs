@@ -1,0 +1,30 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.table-striped{
+	margin-top: 70px;
+}
+.pull-right{
+	float:right;
+}
+
+
+.addnew{
+	margin-top: -50px;
+	position: fixed;
+	float: right;
+	margin-left: 950px;
+	
+}
+.btn-rem{
+	margin-right: 15px;
+}
+th{
+	width: 12.5%;
+}
+.ng-datepicker-input{
+	overflow: hidden;
+	width: 100%;
+	border:1px solid transparent;
+}

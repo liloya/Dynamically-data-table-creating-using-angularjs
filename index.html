@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamically table row with add and removes in angularjs</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/ngDatepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="js/ngDatepicker.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="ListController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div  class="panel-body">
+						<form ng-submit="addNew()" name="myForm"  novalidate >
+                          <input  type="submit" class="btn btn-primary addnew pull-right" value="Create Row">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<!--<th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()"></th>-->
+										<th>Full name</th>
+										<th>username</th>
+										<th>Email</th>
+										<th>Password</th>
+										<th>Contact</th>
+										<th>Birthdate</th>
+										<th>Job category</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody >
+									<tr ng-repeat="personalDetail in personalDetails">
+										<!--<td>
+											<input type="checkbox" ng-model="personalDetail.selected">
+										</td>-->
+										<td>
+											<input type="text" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="personalDetail.fname" name="name" class="form-control" required>
+
+										</td>
+										<td>
+											<input type="text" ng-model="personalDetail.uname" ng-pattern="/^[a-zA-Z0-9]*$/" name="uname" class="form-control" required>
+										</td>
+										<td>
+											<input type="email" ng-model="personalDetail.email" 
+									ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
+											name="email" class="form-control" required>
+										</td>
+										<td>
+											<input type="password" ng-model="personalDetail.password" ng-maxlength="8" name="password" class="form-control" required>
+										</td>
+										<td>
+											<input type="phone" ng-model="personalDetail.phone" ng-pattern="/^[0-9]*$/" name="phone" class="form-control" required>
+										</td>
+										<td>
+											<ng-datepicker ng-model="personalDetail.birthdate" view-format="YYYY-MM-DD" name="select_Date" class="form-control"></ng-datepicker>
+										</td>
+										<td>
+											<select ng-model="personalDetail.cat" class="form-control" ng-options="x for x in names" required></select>
+										</td>
+										<td>
+											<input ng-hide="!personalDetails.length" type="button" class="btn btn-rem btn-danger pull-right" ng-click="remove(personalDetail.fname)" value="Remove">
+										</td>
+										<p style="color: red;" ng-if="myForm.name.$error.pattern">please enter only characters</p>
+										<!--<p style="color: red;" ng-if="myForm.name.$error.required">Firstname is required</p>-->
+
+										<!--<p style="color: red;" ng-if="myForm.name.$error.required ||myForm.uname.$error.required||myForm.email.$error.required||
+										myForm.password.$error.required||myForm.phone.$error.required">please fill up all the blanks</p>-->
+
+										<p style="color: red;"
+										 ng-if="myForm.uname.$error.pattern">please enter only alphanumeric</p>
+										<!--<p style="color: red;" ng-if="myForm.uname.$error.required">Username is required</p>-->
+
+										<!--<p style="color: red;" 
+										ng-if="myForm.email.$error.pattern" >Email is required </p>-->
+
+									     
+										<p style="color: red;" ng-if="myForm.password.$error.maxlength">please enter eight length password </p>
+										<!--<p style="color: red;" ng-if="myForm.password.$error.required">Password is required</p>-->
+
+										<p style="color: red;" ng-if="myForm.phone.$error.pattern">please enter valid phone number </p>
+										<!--<p style="color: red;" ng-if="myForm.phone.$error.required">Phone number is required</p>-->
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+							</div>
+							
+						</form>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>
+
